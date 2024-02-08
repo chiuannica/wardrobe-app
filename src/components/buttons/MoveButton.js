@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Checkbox(props) {
+export default function MoveButton(props) {
     const handleClick = () => {
         if (props.onClick) {
             props.onClick();
