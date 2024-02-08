@@ -7,19 +7,17 @@ import Item from './Item.js'
 export default function ToggleItem(props) {
     const [index, setIndex] = useState(0);
     const items = props.items;
-
-
-
-    const listItems = props.items.map((index, item) =>
-        <Item key={index} item={item}></Item>
-    );
+    
+    const moveItem = (moveBy) => { 
+        setIndex((index) => (index + moveBy + items.length) % items.length);
+    };
 
     return (
         <React.Fragment>
-            <ul>{listItems}</ul>
             <Checkbox></Checkbox>
-            <MoveButton type="Next"></MoveButton>
-            <MoveButton type="Prev"></MoveButton>
+            <MoveButton text="Previous" onClick={() => moveItem(-1)}></MoveButton>
+            <Item item={items[index]}></Item>
+            <MoveButton text="Next" onClick={() => moveItem(1)}></MoveButton>
         </React.Fragment>
     )
 }

@@ -1,22 +1,13 @@
 import React from 'react';
 
 export default function Checkbox(props) {
-    const NEXT = 'Next';
-    const PREV = 'Prev';
+    const handleClick = () => {
+        if (props.onClick) {
+            props.onClick();
+        }
+    };
 
-    switch (props.type) {
-        case NEXT:
-            return (
-                <React.Fragment>
-                    <button>{ NEXT }</button>
-                </React.Fragment>
-            )
-        case PREV:
-            return (
-                <React.Fragment>
-                    <button>{ PREV }</button>
-                </React.Fragment>
-            )
-        default:
-    }
+    return (
+        <button onClick={handleClick}>{props.text}</button>
+    );
 }
